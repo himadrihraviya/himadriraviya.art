@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>About — Himadri Raviya</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <a class="brand" href="index.html">HR</a>
+    <nav class="nav">
+      <a href="projects.html">Projects</a>
+      <a class="active" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page narrow">
+    <h1 class="page-title">About</h1>
+    <div class="about">
+      <img class="avatar" src="images/profile.jpg" alt="Himadri Raviya portrait">
+      <p>
+        I am a Fashion Technology student working at the intersection of textiles, electronics, and human-centred design.
+        My interests include smart fabrics, wearable sensing, apparel CAD, and sustainable materials. I enjoy turning lab
+        experiments into clear prototypes and publishable case studies.
+      </p>
+      <p>
+        Strengths: pattern engineering, BOM planning, rapid prototyping, fabric testing, and visual documentation.
+        I collaborate with teams to bridge craft and computation.
+      </p>
+      <p>
+        <a class="btn" href="docs/Himadri-Raviya-Resume.pdf">Download Résumé</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Himadri Raviya</p>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/bg.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

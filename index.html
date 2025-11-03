@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Himadri Raviya — Portfolio</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Portfolio of Himadri Raviya — Fashion Technology projects.">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="index.html">HR</a>
+    <nav class="nav">
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <div class="hero-inner">
+      <h1 class="title">Himadri Raviya</h1>
+      <p class="tagline">Fashion Technology student exploring smart textiles, wearable systems, and sustainable design.</p>
+      <div class="cta">
+        <a class="btn" href="projects.html">See Projects</a>
+        <a class="btn ghost" href="about.html">About</a>
+      </div>
+    </div>
+  </main>
+
+  <section class="stripe">
+    <div class="stripe-inner">
+      <h2 class="section-title">Recent Work</h2>
+      <div id="recentGrid" class="grid"></div>
+      <div class="more"><a class="link" href="projects.html">Browse all projects →</a></div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Himadri Raviya · <a href="mailto:hello@example.com">hello@example.com</a></p>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/bg.js"></script>
+  <script>
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const grid = document.getElementById('recentGrid');
+      const res = await fetch('data/projects.json');
+      const list = await res.json();
+      list.slice(0,6).forEach(p => grid.insertAdjacentHTML('beforeend', projectCard(p)));
+    });
+  </script>
+</body>
+</html>

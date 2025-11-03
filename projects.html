@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Projects — Himadri Raviya</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <a class="brand" href="index.html">HR</a>
+    <nav class="nav">
+      <a class="active" href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">Projects</h1>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="projectsGrid" aria-live="polite"></div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Himadri Raviya</p>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/bg.js"></script>
+  <script>
+    const renderFilters = (tags) => {
+      const el = document.getElementById('filters');
+      const all = ['All', ...tags];
+      all.forEach(t => {
+        el.insertAdjacentHTML('beforeend', `<button class="chip" data-tag="${t}">${t}</button>`);
+      });
+      el.addEventListener('click', e => {
+        if(e.target.matches('.chip')) {
+          document.querySelectorAll('.chip').forEach(c=>c.classList.remove('chip-active'));
+          e.target.classList.add('chip-active');
+          const tag = e.target.dataset.tag;
+          filter(tag);
+        }
+      });
+      el.querySelector('.chip').classList.add('chip-active');
+    };
+
+    let ALL = [];
+    const grid = document.getElementById('projectsGrid');
+
+    const filter = (tag) => {
+      grid.innerHTML = '';
+      const items = tag === 'All' ? ALL : ALL.filter(p => p.tags.includes(tag));
+      items.forEach(p => grid.insertAdjacentHTML('beforeend', projectCard(p)));
+    };
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const res = await fetch('data/projects.json');
+      ALL = await res.json();
+      const tags = Array.from(new Set(ALL.flatMap(p=>p.tags))).sort();
+      renderFilters(tags);
+      filter('All');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title id="titleTag">Project — Himadri Raviya</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <a class="brand" href="index.html">HR</a>
+    <nav class="nav">
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <article class="case" id="case"></article>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Himadri Raviya</p>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/bg.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    const slug = q.get('slug');
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      document.getElementById('year').textContent = new Date().getFullYear();
+      const res = await fetch('data/projects.json');
+      const list = await res.json();
+      const p = list.find(x => x.slug === slug);
+      if (!p) { document.getElementById('case').innerHTML = '<p>Project not found.</p>'; return; }
+
+      document.getElementById('titleTag').textContent = `${p.title} — Himadri Raviya`;
+
+      const gallery = p.images.map(src => `<img class="shot" src="${src}" alt="${p.title} image">`).join('');
+      const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+      document.getElementById('case').innerHTML = `
+        <h1 class="page-title">${p.title}</h1>
+        <p class="meta">${p.year} · ${p.category}</p>
+        <p class="lead">${p.summary}</p>
+        <div class="gallery">${gallery}</div>
+        <section class="case-sec"><h2>Context</h2><p>${p.context}</p></section>
+        <section class="case-sec"><h2>Process</h2><p>${p.process}</p></section>
+        <section class="case-sec"><h2>Outcome</h2><p>${p.outcome}</p></section>
+        <div class="tags">${tags}</div>
+        <div class="backlink"><a class="link" href="projects.html">← Back to Projects</a></div>
+      `;
+    });
+  </script>
+</body>
+</html>

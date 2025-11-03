@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact — Himadri Raviya</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+  <header class="site-header">
+    <a class="brand" href="index.html">HR</a>
+    <nav class="nav">
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page narrow">
+    <h1 class="page-title">Contact</h1>
+    <form class="form" onsubmit="alert('Thank you, your message has been noted.'); this.reset(); return false;">
+      <label> Name <input required type="text" placeholder="Your name"> </label>
+      <label> Email <input required type="email" placeholder="you@example.com"> </label>
+      <label> Message <textarea required rows="6" placeholder="Write your message"></textarea> </label>
+      <button class="btn" type="submit">Send</button>
+    </form>
+    <p class="note">Or write to: <a href="mailto:hello@example.com">hello@example.com</a></p>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Himadri Raviya</p>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/bg.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
