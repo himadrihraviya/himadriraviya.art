@@ -1,0 +1,43 @@
+[
+  {
+    "slug": "sample-project",
+    "title": "E-Textile Gesture Sleeve",
+    "year": "2025",
+    "category": "Wearable Tech",
+    "tags": [
+      "Wearables",
+      "Sensors",
+      "CAD"
+    ],
+    "summary": "A knitted sleeve with conductive pathways that tracks forearm flexion for silent gesture input.",
+    "context": "Course studio exploring textile interfaces for accessibility and hands-free control.",
+    "process": "Pattern design, conductive yarn routing, microcontroller prototyping, and firmware mapping.",
+    "outcome": "Reliable gesture recognition in low-light runway tests; documented BOM and stitch map.",
+    "cover": "images/projects/sample-project/cover.jpg",
+    "images": [
+      "images/projects/sample-project/shot1.jpg",
+      "images/projects/sample-project/shot2.jpg",
+      "images/projects/sample-project/shot3.jpg"
+    ]
+  },
+  {
+    "slug": "smart-drape",
+    "title": "Smart Drape Lighting",
+    "year": "2024",
+    "category": "Smart Textiles",
+    "tags": [
+      "Materials",
+      "Lighting"
+    ],
+    "summary": "Soft woven panel with embedded LED filaments for ambient architectural glow.",
+    "context": "Material research to merge interior light with fabric tactility.",
+    "process": "Wiring patterns, diffusion tests, thermal safety pass.",
+    "outcome": "Modular panel system with magnetic connectors.",
+    "cover": "images/projects/sample-project/cover.jpg",
+    "images": [
+      "images/projects/sample-project/shot1.jpg",
+      "images/projects/sample-project/shot2.jpg",
+      "images/projects/sample-project/shot3.jpg"
+    ]
+  }
+]
